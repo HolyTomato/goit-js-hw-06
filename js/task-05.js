@@ -1,9 +1,16 @@
-const input = document.getElementById("name-input");
-const span = document.getElementById("name-output");
-
-input.addEventListener("input", getInputValuesHandler);
-
-function getInputValuesHandler(event) {
-  span.textContent = event.currentTarget.value;
+const refs = {
+    input: document.querySelector('#name-input'),
+    nameLabel: document.querySelector('#name-output'),
 }
+
+const getInputValue = ({ currentTarget }) => {
+    if (currentTarget.value.trim() !== '') {
+        refs.nameLabel.textContent = currentTarget.value.trim();
+    } else {
+        refs.nameLabel.textContent = 'Anonymous';
+    }
+};
+
+refs.input.addEventListener('input', getInputValue);
+
 
